@@ -22,6 +22,8 @@ The goal of this project is to experiement with various ways to generate PDF fil
     - currently tested
  - PDFBox
     - currently tested
+ - Apache FOP
+    - trying to stay away from XSL-FO!
  - JPedal 
     - commercial => not tested for now
  - jpod lib
@@ -29,9 +31,20 @@ The goal of this project is to experiement with various ways to generate PDF fil
  - ImageMagik
     - could be a solution for thumbnail generation
 
+**References**
+
+ - http://abhishekkumararya.blogspot.com/2013/09/comparison-of-java-based-pdf-generation.html
 
 
 ### Example output
+
+Here is the current tests results:
+
+ - Corei7 (i7-8550U) with 4 Core + Hyperthreading (8 logical Cores)
+ - Java 11 / Linux
+
+NB: This is a laptop so IO probably sucks
+
 
     [INFO] Running TestPDF
     ----------------------------------------------------------
