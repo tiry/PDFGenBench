@@ -1,4 +1,4 @@
-package org.nuxeo.bench;
+package org.nuxeo.bench.gen;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;

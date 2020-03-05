@@ -9,12 +9,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
-import org.nuxeo.bench.ITextGenerator;
-import org.nuxeo.bench.ITextTemplateBasedGenerator;
-import org.nuxeo.bench.ITextTemplateBasedGeneratorWithIdx;
-import org.nuxeo.bench.PDFBoxGenerator;
-import org.nuxeo.bench.PDFBoxUpdater;
-import org.nuxeo.bench.PDFGenerator;
+import org.nuxeo.bench.gen.ITextGenerator;
+import org.nuxeo.bench.gen.ITextTemplateBasedGenerator;
+import org.nuxeo.bench.gen.ITextTemplateBasedGeneratorWithIdx;
+import org.nuxeo.bench.gen.PDFBoxGenerator;
+import org.nuxeo.bench.gen.PDFBoxUpdater;
+import org.nuxeo.bench.gen.PDFGenerator;
 
 public class TestPDF {
 

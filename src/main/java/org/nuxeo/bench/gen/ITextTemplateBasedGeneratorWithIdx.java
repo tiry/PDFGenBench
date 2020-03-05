@@ -1,4 +1,4 @@
-package org.nuxeo.bench;
+package org.nuxeo.bench.gen;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -14,12 +14,20 @@ import com.itextpdf.kernel.pdf.PdfObject;
 import com.itextpdf.kernel.pdf.PdfPage;
 import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfStream;
+import com.itextpdf.kernel.pdf.PdfVersion;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.pdf.ReaderProperties;
+import com.itextpdf.kernel.pdf.WriterProperties;
 import com.itextpdf.kernel.pdf.xobject.PdfImageXObject;
+import com.itextpdf.kernel.xmp.XMPMeta;
+import com.itextpdf.kernel.xmp.XMPMetaFactory;
+import com.itextpdf.kernel.xmp.impl.XMPMetaImpl;
 
 public class ITextTemplateBasedGeneratorWithIdx extends ITextTemplateBasedGenerator {
 
 	protected Map<Integer, byte[]> index = new HashMap<Integer, byte[]>();
+	
+	protected XMPMeta xmpMeta;
 	
 	public String getName() {		
 		return "Template based generation with Index pre-processing using iText";
@@ -35,7 +43,10 @@ public class ITextTemplateBasedGeneratorWithIdx extends ITextTemplateBasedGenera
 
 		PdfPage page = doc.getFirstPage();
         PdfDictionary dict = page.getPdfObject();
-
+        
+        byte[] metadata = doc.getXmpMetadata(true);
+        xmpMeta=  XMPMetaFactory.parseFromBuffer(metadata);
+        
         PdfObject object = dict.get(PdfName.Contents);
 
         if (object instanceof PdfStream) {
@@ -60,9 +71,18 @@ public class ITextTemplateBasedGeneratorWithIdx extends ITextTemplateBasedGenera
 	
 	public void generate(OutputStream buffer, OutputStream thumb) throws Exception {
 
-		PdfReader pdfReader = new PdfReader(new ByteArrayInputStream(template));					
-		PdfWriter writer = new PdfWriter(buffer);		
-		PdfDocument doc = new PdfDocument(pdfReader, writer);
+		ReaderProperties rp = new ReaderProperties();		
+		PdfReader pdfReader = new PdfReader(new ByteArrayInputStream(template));	
+		
+		
+		WriterProperties wp = new WriterProperties();
+		wp.setPdfVersion(PdfVersion.PDF_1_4);
+		wp.useSmartMode();
+		
+		PdfWriter writer = new PdfWriter(buffer, wp);		
+		PdfDocument doc = new HackedPDFDocument(pdfReader, writer);
+
+		//doc.setXmpMetadata(xmpMeta);
 		
 		PdfPage page = doc.getFirstPage();
         PdfDictionary dict = page.getPdfObject();

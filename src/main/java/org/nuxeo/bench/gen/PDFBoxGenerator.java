@@ -1,4 +1,4 @@
-package org.nuxeo.bench;
+package org.nuxeo.bench.gen;
 
 import java.io.File;
 import java.io.OutputStream;

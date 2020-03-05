@@ -33,6 +33,19 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+
+   <repository>
+      <id>itext</id>
+      <name>itext repo</name>
+      <url>https://repo.itextsupport.com/releases/</url>
+    </repository>
+
+    <repository>
+        <id>com.e-iceblue</id>
+        <name>e-iceblue</name>
+        <url>http://repo.e-iceblue.com/nexus/content/groups/public/</url>
+    </repository>
+
   </repositories>
 
   <pluginRepositories>
@@ -65,6 +78,11 @@
         <artifactId>layout</artifactId>
         <version>7.1.10</version>
     </dependency>
+    <dependency>
+        <groupId>com.itextpdf</groupId>
+        <artifactId>pdfrender</artifactId>
+        <version>1.0.0</version>
+    </dependency>
 
     <dependency>
        <groupId>org.apache.pdfbox</groupId>
@@ -75,9 +93,33 @@
         <groupId>org.apache.pdfbox</groupId>
         <artifactId>fontbox</artifactId>
         <version>2.0.19</version>
-      </dependency>
-  </dependencies>
+    </dependency>
+    <dependency>
+        <groupId>org.swinglabs</groupId>
+	<artifactId>pdf-renderer</artifactId>
+	<version>1.0.5</version>
+    </dependency>
 
+    <dependency>
+        <groupId> e-iceblue </groupId>
+        <artifactId>spire.pdf</artifactId>
+        <version>2.2.0</version>
+    </dependency>
+
+    <!-- API, java.xml.bind module -->
+    <dependency>
+       <groupId>jakarta.xml.bind</groupId>
+       <artifactId>jakarta.xml.bind-api</artifactId>
+       <version>2.3.2</version>
+    </dependency>
+    <!-- Runtime, com.sun.xml.bind module -->
+    <dependency>
+       <groupId>org.glassfish.jaxb</groupId>
+       <artifactId>jaxb-runtime</artifactId>
+       <version>2.3.2</version>
+    </dependency>
+
+</dependencies>
 
   <build>
     <plugins>
