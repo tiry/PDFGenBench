@@ -9,17 +9,18 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
-import org.nuxeo.bench.gen.ITextGenerator;
+import org.nuxeo.bench.gen.ITextNXBankStatementGenerator;
 import org.nuxeo.bench.gen.ITextTemplateBasedGenerator;
 import org.nuxeo.bench.gen.ITextTemplateBasedGeneratorWithIdx;
+import org.nuxeo.bench.gen.ITextTemplateCreator;
 import org.nuxeo.bench.gen.PDFBoxGenerator;
 import org.nuxeo.bench.gen.PDFBoxUpdater;
 import org.nuxeo.bench.gen.PDFGenerator;
+import org.nuxeo.bench.rnd.RandomDataGenerator;
 
 public class TestPDF {
-
 	
-	protected static final int NB_CALLS = 2500;
+	protected static final int NB_CALLS = 5000;
 	protected static final int NB_THREADS = 10;
 
 	public int runTest(PDFGenerator gen, File in) throws Exception {		
@@ -30,12 +31,10 @@ public class TestPDF {
 		executor.prestartAllCoreThreads();
 		AtomicInteger counter = new AtomicInteger();
 		AtomicInteger genSize =  new AtomicInteger();
-
 		
 		System.out.println("----------------------------------------------------------");
 		System.out.println("Testing " + gen.getName());
 		System.out.println("  input file:" +  in.getName());
-
 		
 		long t0 = System.currentTimeMillis();
 				
@@ -87,9 +86,10 @@ public class TestPDF {
 
 
 	@Test
-	public void test() throws Exception {				
-		PDFGenerator gen = new ITextTemplateBasedGeneratorWithIdx();
-		URL url = this.getClass().getResource("statement_sample1.PDF");
+	public void test() throws Exception {	
+				
+		ITextTemplateCreator gen = new ITextTemplateCreator();
+		URL url = this.getClass().getResource("NxBank3.png");
 		File in = new File(url.toURI());
 		
 		gen.init(in);		
@@ -97,16 +97,75 @@ public class TestPDF {
 		File out = File.createTempFile("pdf-gen", ".pdf");
 		FileOutputStream stream = new FileOutputStream(out);
 
-		File thumb = File.createTempFile("pdf-gen", ".jpg");
-		FileOutputStream tmb = new FileOutputStream(thumb);
-
-		gen.generate(stream, tmb);
+		gen.generate(stream, null);
 		
-		System.out.println(out.getAbsolutePath());
-		System.out.println(thumb.getAbsolutePath());
-		
+		System.out.println(out.getAbsolutePath());		
 		
 	}
+
+	
+	@Test
+	public void genNxTemplate() throws Exception {	
+				
+		ITextTemplateCreator gen = new ITextTemplateCreator();
+		URL url = this.getClass().getResource("NxBank3.png");
+		File in = new File(url.toURI());
+		
+		gen.init(in);		
+		
+		File out = File.createTempFile("pdf-gen", ".pdf");
+		FileOutputStream stream = new FileOutputStream(out);
+
+		gen.generate(stream, null);
+		
+		System.out.println(out.getAbsolutePath());		
+		
+	}
+
+	
+	@Test
+	public void testNxBs() throws Exception {	
+
+		RandomDataGenerator rnd = new RandomDataGenerator();
+
+		URL csvurl = this.getClass().getResource("data.csv");
+		File csv = new File(csvurl.toURI());
+		rnd.init(csv);
+
+		ITextNXBankStatementGenerator gen = new ITextNXBankStatementGenerator();
+		URL url = this.getClass().getResource("nxbank-template.pdf");
+		File in = new File(url.toURI());
+		
+		gen.init(in);
+		gen.setRndGenerator(rnd);		
+		
+		File out = File.createTempFile("pdf-gen", ".pdf");
+		FileOutputStream stream = new FileOutputStream(out);
+
+		gen.generate(stream, null);
+		
+		System.out.println(out.getAbsolutePath());				
+	}
+
+
+	@Test
+	public void benchNxBx() throws Exception {				
+		RandomDataGenerator rnd = new RandomDataGenerator();
+
+		URL csvurl = this.getClass().getResource("data.csv");
+		File csv = new File(csvurl.toURI());
+		rnd.init(csv);
+
+		ITextNXBankStatementGenerator gen = new ITextNXBankStatementGenerator();
+		URL url = this.getClass().getResource("nxbank-template.pdf");
+		File in = new File(url.toURI());
+		
+		gen.setRndGenerator(rnd);		
+
+		runTest(gen, in);		
+	}
+
+	
 
 	@Test
 	public void bench1() throws Exception {				
@@ -127,9 +186,9 @@ public class TestPDF {
 
 	@Test
 	public void bench3() throws Exception {
-		URL url = this.getClass().getResource("bank-logo.png");
+		URL url = this.getClass().getResource("NxBank3.png");
 		File in = new File(url.toURI());
-		PDFGenerator gen = new ITextGenerator();
+		PDFGenerator gen = new ITextTemplateCreator();
 		runTest(gen, in);		
 	}
 	

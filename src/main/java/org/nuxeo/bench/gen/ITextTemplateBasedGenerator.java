@@ -44,8 +44,6 @@ public class ITextTemplateBasedGenerator implements PDFGenerator{
 		replacements.put("2003", "2019");
 		replacements.put("20.00", "40");
 		replacements.put("10,521.19", "10,501.19");
-		
-		
 				
 	}
 	
