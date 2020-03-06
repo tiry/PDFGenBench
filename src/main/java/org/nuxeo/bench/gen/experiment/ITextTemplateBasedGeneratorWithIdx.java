@@ -1,4 +1,4 @@
-package org.nuxeo.bench.gen;
+package org.nuxeo.bench.gen.experiment;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.nuxeo.bench.gen.HackedPDFDocument;
 
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;

@@ -1,4 +1,4 @@
-package org.nuxeo.bench.gen;
+package org.nuxeo.bench.gen.experiment;
 
 import java.io.File;
 import java.io.OutputStream;
@@ -11,6 +11,7 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import org.nuxeo.bench.gen.PDFGenerator;
 
 public class PDFBoxGenerator implements PDFGenerator {
 

@@ -1,8 +1,10 @@
-package org.nuxeo.bench.gen;
+package org.nuxeo.bench.gen.experiment;
 
 import java.io.File;
 import java.io.OutputStream;
 import java.nio.file.Files;
+
+import org.nuxeo.bench.gen.PDFGenerator;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;

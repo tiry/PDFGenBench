@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.OutputStream;
 
 public interface PDFGenerator {
-
 	
 	String getName();
 	

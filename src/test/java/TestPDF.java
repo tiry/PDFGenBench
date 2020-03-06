@@ -10,12 +10,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 import org.nuxeo.bench.gen.ITextNXBankStatementGenerator;
-import org.nuxeo.bench.gen.ITextTemplateBasedGenerator;
-import org.nuxeo.bench.gen.ITextTemplateBasedGeneratorWithIdx;
-import org.nuxeo.bench.gen.ITextTemplateCreator;
-import org.nuxeo.bench.gen.PDFBoxGenerator;
-import org.nuxeo.bench.gen.PDFBoxUpdater;
+import org.nuxeo.bench.gen.ITextNXBankTemplateCreator;
 import org.nuxeo.bench.gen.PDFGenerator;
+import org.nuxeo.bench.gen.experiment.ITextTemplateBasedGenerator;
+import org.nuxeo.bench.gen.experiment.ITextTemplateBasedGeneratorWithIdx;
+import org.nuxeo.bench.gen.experiment.PDFBoxGenerator;
+import org.nuxeo.bench.gen.experiment.PDFBoxUpdater;
 import org.nuxeo.bench.rnd.RandomDataGenerator;
 
 public class TestPDF {
@@ -88,7 +88,7 @@ public class TestPDF {
 	@Test
 	public void test() throws Exception {	
 				
-		ITextTemplateCreator gen = new ITextTemplateCreator();
+		ITextNXBankTemplateCreator gen = new ITextNXBankTemplateCreator();
 		URL url = this.getClass().getResource("NxBank3.png");
 		File in = new File(url.toURI());
 		
@@ -107,7 +107,7 @@ public class TestPDF {
 	@Test
 	public void genNxTemplate() throws Exception {	
 				
-		ITextTemplateCreator gen = new ITextTemplateCreator();
+		ITextNXBankTemplateCreator gen = new ITextNXBankTemplateCreator();
 		URL url = this.getClass().getResource("NxBank3.png");
 		File in = new File(url.toURI());
 		
@@ -188,7 +188,7 @@ public class TestPDF {
 	public void bench3() throws Exception {
 		URL url = this.getClass().getResource("NxBank3.png");
 		File in = new File(url.toURI());
-		PDFGenerator gen = new ITextTemplateCreator();
+		PDFGenerator gen = new ITextNXBankTemplateCreator();
 		runTest(gen, in);		
 	}
 	

@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
-import org.nuxeo.bench.gen.ITextTemplateBasedGeneratorWithIdx;
 import org.nuxeo.bench.gen.PDFGenerator;
+import org.nuxeo.bench.gen.experiment.ITextTemplateBasedGeneratorWithIdx;
 import org.nuxeo.bench.render.ITextPDFRenderer;
 import org.nuxeo.bench.render.JavaPDFRenderer;
 import org.nuxeo.bench.render.PDFBoxRenderer;

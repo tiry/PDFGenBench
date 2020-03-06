@@ -1,4 +1,4 @@
-package org.nuxeo.bench.gen;
+package org.nuxeo.bench.gen.experiment;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.nuxeo.bench.gen.PDFGenerator;
 
 import com.itextpdf.kernel.pdf.PdfDictionary;
 import com.itextpdf.kernel.pdf.PdfDocument;

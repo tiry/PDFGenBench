@@ -1,4 +1,4 @@
-package org.nuxeo.bench.gen;
+package org.nuxeo.bench.gen.experiment;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -15,6 +15,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDStream;
 import org.apache.pdfbox.rendering.ImageType;
 import org.apache.pdfbox.rendering.PDFRenderer;
+import org.nuxeo.bench.gen.PDFGenerator;
 
 public class PDFBoxUpdater implements PDFGenerator {
 
